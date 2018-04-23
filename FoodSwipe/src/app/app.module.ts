@@ -3,16 +3,18 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { RouterModule } from './/router.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RoutingModule } from './routing.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
