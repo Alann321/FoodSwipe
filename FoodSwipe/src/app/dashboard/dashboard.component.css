@@ -1,0 +1,34 @@
+img {
+  display: block;
+  margin: 0 auto;
+  top: 100px;
+
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.title-small {
+  /* display: inline; */
+  text-align: center;
+  font-weight: 100;
+  font-size: 2em;
+  padding: 0px;
+}
+
+.title-large {
+  font-weight: 100;
+  font-size: 7em;
+  text-align: center;
+}
+
+.footer {
+  bottom: 0px;
+}
+
+.btn.btn-light.btn-block {
+  margin-top: 70px;
+  font-weight: 100;
+  font-size: 2em !important;
+}
