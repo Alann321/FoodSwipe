@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 // tslint:disable-next-line:import-blacklist
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 
 @Injectable()
 export class ApiRepositoryService {
