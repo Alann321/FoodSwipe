@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { ApiRepositoryService } from './domain/api-repository.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     RoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     ApiRepositoryService

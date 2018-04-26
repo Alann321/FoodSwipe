@@ -27,15 +27,15 @@ export class MainComponent implements OnInit {
 
 
 
-
+  /*
   public getLocation() {
 
     // get the location by typing the city name (an alternative)
-    /*
-    this.apiRepo.getLocation('Dallas').subscribe(data => {
-      console.log(data);
-    });
-    */
+
+   // this.apiRepo.getLocation('Dallas').subscribe(data => {
+   //   console.log(data);
+   // });
+
 
    // get the user's location:
     const url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=';
@@ -59,6 +59,7 @@ export class MainComponent implements OnInit {
 
 
   }
+  */
 
 
 }

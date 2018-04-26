@@ -5,6 +5,50 @@
         <div class = "title-large">Food Swipe</div>
       </div>
   </div>
-  <button type="button" class="btn btn-light btn-block" routerLink = "/main">Get Started</button>
+  <!-- call the modal -->
+  <!-- <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#exampleModal" routerLink = "/main">Get Started</button> -->
+  <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#exampleModal">Get Started</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Location</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="selectLocation">
+          Enter Location
+        </label>
+        <br>
+
+        <input
+              name="enteredDestination"
+              class="form-control"
+              [(ngModel)]="enteredLocation.entry"
+        >
+
+        <!-- Determine if the location has been provided -->
+        <div *ngIf="enteredLocation.entry !== ''">
+          <br>
+          <button type="button" class="btn btn-primary" (click)="searchLocation()">Begin Swiping!</button>
+        </div>
+
+        <label>or</label>
+        <br>
+        <button type="button" class="btn btn-success" (click)="getLocation()">Use My Current Location</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   <!-- <div class = "footer">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
 </div>

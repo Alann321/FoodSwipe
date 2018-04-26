@@ -11,6 +11,15 @@ export class ApiRepositoryService {
   private googleKey = 'AIzaSyDqwKoOqbL45nEFOWv0rPfxXLUAX2DSZus';
   private googleEndpoint = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
 
+
+
+
+  // const url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=';
+  // const key = 'AIzaSyCXa0QPxqzAMwEr2do9F0RA_v6TogZt4cw';
+  private jeremyEndPoint = 'https://www.googleapis.com/geolocation/v1/geolocate?key=';
+  private jeremyGoogleKey = 'AIzaSyCXa0QPxqzAMwEr2do9F0RA_v6TogZt4cw';
+
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -20,6 +29,12 @@ export class ApiRepositoryService {
   // GET : retrieves information about your location
   public getLocation(location: string): Observable<any> {
     return this.httpClient.get(`${this.googleEndpoint}${location}&key=${this.googleKey}`).pipe(
+      catchError(this.handleException)
+    );
+  }
+  // get the user's geolocation
+  public getGeoLocation(): Observable<any> {
+    return this.httpClient.get(`${this.jeremyEndPoint}&key=${this.jeremyGoogleKey}`).pipe(
       catchError(this.handleException)
     );
   }
