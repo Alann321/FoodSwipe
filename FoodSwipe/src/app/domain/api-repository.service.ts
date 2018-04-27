@@ -34,7 +34,7 @@ export class ApiRepositoryService {
   }
   // get the user's geolocation
   public getGeoLocation(): Observable<any> {
-    return this.httpClient.get(`${this.jeremyEndPoint}&key=${this.jeremyGoogleKey}`).pipe(
+    return this.httpClient.post(`${this.jeremyEndPoint}${this.jeremyGoogleKey}`, null).pipe(
       catchError(this.handleException)
     );
   }
