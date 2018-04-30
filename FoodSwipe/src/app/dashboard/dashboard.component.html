@@ -34,12 +34,12 @@
         <!-- Determine if the location has been provided -->
         <div *ngIf="enteredLocation !== ''">
           <br>
-          <button type="button" class="btn btn-primary" (click)="searchLocation()">Begin Swiping!</button>
+          <button type="button" class="btn btn-primary" (click)="searchLocation()" data-dismiss="modal">Begin Swiping!</button>
         </div>
 
         <label>or</label>
         <br>
-        <button type="button" class="btn btn-success" (click)="getLocation()">Use My Current Location</button>
+        <button type="button" class="btn btn-success" (click)="getLocation()" data-dismiss="modal">Use My Current Location</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
