@@ -28,11 +28,11 @@
         <input
               name="enteredDestination"
               class="form-control"
-              [(ngModel)]="enteredLocation.entry"
+              [(ngModel)]="enteredLocation"
         >
 
         <!-- Determine if the location has been provided -->
-        <div *ngIf="enteredLocation.entry !== ''">
+        <div *ngIf="enteredLocation !== ''">
           <br>
           <button type="button" class="btn btn-primary" (click)="searchLocation()">Begin Swiping!</button>
         </div>

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 
 import { GeoLocation } from './models/geolocation';
-import { EnteredLocation } from './models/enteredlocation';
 import { ApiRepositoryService } from './api-repository.service';
 
 @NgModule({
@@ -14,8 +13,7 @@ import { ApiRepositoryService } from './api-repository.service';
   declarations: [],
   exports: [
     ApiRepositoryService,
-    GeoLocation,
-    EnteredLocation
+    GeoLocation
   ]
 })
 export class DomainModule { }
