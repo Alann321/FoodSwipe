@@ -10,12 +10,6 @@ export class ApiRepositoryService {
   private zomatoKey = '62d9652426150fe284e1eff5ed7d98b3';
   private googleKey = 'AIzaSyDqwKoOqbL45nEFOWv0rPfxXLUAX2DSZus';
   private googleEndpoint = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
-
-
-
-
-  // const url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=';
-  // const key = 'AIzaSyCXa0QPxqzAMwEr2do9F0RA_v6TogZt4cw';
   private jeremyEndPoint = 'https://www.googleapis.com/geolocation/v1/geolocate?key=';
   private jeremyGoogleKey = 'AIzaSyCXa0QPxqzAMwEr2do9F0RA_v6TogZt4cw';
 
