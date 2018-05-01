@@ -14,13 +14,13 @@ export class InfoService {
       'radius': this.radius
     };
   }
-  public setInfo(latitude, longitude, radius) {
+  setInfo(latitude, longitude, radius) {
     this.info.lat = latitude;
     this.info.lng = longitude;
     this.info.radius = radius;
   }
 
-  public getInfo(): any {
+  getInfo(): any {
     return this.info;
   }
 }
