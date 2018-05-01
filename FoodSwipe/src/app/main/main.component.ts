@@ -46,7 +46,7 @@ export class MainComponent implements OnInit {
 
   public showResults() {
     console.log('Showing results');
-    this.router.navigateByUrl('results');
+    this.router.navigateByUrl('/results');
   }
   public yes() {
     // loop through restaurant array to add
