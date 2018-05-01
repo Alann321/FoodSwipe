@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http'
 export class ApiRepositoryService {
 
   private zomatoKey = '62d9652426150fe284e1eff5ed7d98b3';
+  private zomatoEndpoint = 'https://developers.zomato.com/api/v2.1/search?';
   private googleKey = 'AIzaSyDqwKoOqbL45nEFOWv0rPfxXLUAX2DSZus';
   private googleEndpoint = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
   private jeremyEndPoint = 'https://www.googleapis.com/geolocation/v1/geolocate?key=';
@@ -16,7 +17,8 @@ export class ApiRepositoryService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Accept': 'application/json',
+      'user-key': this.zomatoKey
     })
   };
   constructor(protected httpClient: HttpClient) { }
@@ -29,6 +31,12 @@ export class ApiRepositoryService {
   // get the user's geolocation
   public getGeoLocation(): Observable<any> {
     return this.httpClient.post(`${this.jeremyEndPoint}${this.jeremyGoogleKey}`, null).pipe(
+      catchError(this.handleException)
+    );
+  }
+  // get list of restaurants 1-20 within a given radius
+  public getRestaurants(lat: number, lng: number, radius: number ): Observable<any> {
+    return this.httpClient.get(`${this.zomatoEndpoint}/count=20&lat=${lat}&lon=${lng}&radius=${radius}`, this.httpOptions).pipe(
       catchError(this.handleException)
     );
   }

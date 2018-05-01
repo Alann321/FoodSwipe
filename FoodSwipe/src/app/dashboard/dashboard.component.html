@@ -1,52 +1,55 @@
 <div class="container">
-  <div class = "title-elements">
-      <img src="../../assets/logo2.png">
-      <div class = "sub">
-        <div class = "title-large">Food Swipe</div>
-      </div>
+  <div class="title-elements">
+    <img src="../../assets/logo2.png">
+    <div class="sub">
+      <div class="title-large">Food Swipe</div>
+    </div>
   </div>
   <!-- call the modal -->
   <!-- <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#exampleModal" routerLink = "/main">Get Started</button> -->
   <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#exampleModal">Get Started</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Select Location</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label for="selectLocation">
-          Enter Location
-        </label>
-        <br>
-
-        <input
-              name="enteredDestination"
-              class="form-control"
-              [(ngModel)]="enteredLocation"
-        >
-
-        <!-- Determine if the location has been provided -->
-        <div *ngIf="enteredLocation !== ''">
-          <br>
-          <button type="button" class="btn btn-primary" (click)="searchLocation()" data-dismiss="modal">Begin Swiping!</button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Select Location</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <label for="enterRadius">
+            Enter Search Radius (miles)
+          </label>
+          <br>
 
-        <label>or</label>
-        <br>
-        <button type="button" class="btn btn-success" (click)="getLocation()" data-dismiss="modal">Use My Current Location</button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input name="enteredRadius" class="form-control" [(ngModel)]="+radiusMiles" (change)="milesToMeters()">
+
+          <label for="selectLocation">
+            Enter Location
+          </label>
+          <br>
+
+          <input name="enteredDestination" class="form-control" [(ngModel)]="enteredLocation">
+
+          <!-- Determine if the location has been provided -->
+          <div *ngIf="enteredLocation !== ''">
+            <br>
+            <button type="button" class="btn btn-primary" (click)="searchLocation()" data-dismiss="modal">Begin Swiping!</button>
+          </div>
+
+          <label>or</label>
+          <br>
+          <button type="button" class="btn btn-success" (click)="getLocation()" data-dismiss="modal">Use My Current Location</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
 

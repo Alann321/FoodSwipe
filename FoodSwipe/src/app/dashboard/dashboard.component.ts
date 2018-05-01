@@ -1,7 +1,7 @@
 import { GeoLocation } from './../domain/models/geolocation';
 import { ApiRepositoryService } from './../domain/api-repository.service';
 import { Component, OnInit, Input, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -19,6 +19,8 @@ export class DashboardComponent implements OnInit {
   // otherwise user sees + replacing spaces in text box
   public passedInLocation: string;
   public newLocation: GeoLocation;
+  public radiusMiles: number;
+  public radiusMeters: number;
 
   constructor(
     private apiRepo: ApiRepositoryService,
@@ -27,8 +29,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     // initialize the data inside the location as blank
-    this.newLocation = { };
-
+    this.newLocation = {};
+    this.radiusMiles = 0;
     this.enteredLocation = '';
   }
 
@@ -40,25 +42,24 @@ export class DashboardComponent implements OnInit {
     this.passedInLocation = this.enteredLocation.replace(/\s/g, '+');
     // search the user's location:
     this.apiRepo.getLocation(this.passedInLocation).subscribe(data => {
-      this.newLocation.latitude = data.results[0].geometry.location.lat; // filler
-      this.newLocation.longitude = data.results[0].geometry.location.lng; // filler
+      this.newLocation.latitude = data.results[0].geometry.location.lat;
+      this.newLocation.longitude = data.results[0].geometry.location.lng;
       this.router.navigateByUrl('/main');
-      console.log(this.newLocation);
     });
 
   }
 
   public getLocation() {
 
-    this.apiRepo.getGeoLocation().subscribe( data => {
+    this.apiRepo.getGeoLocation().subscribe(data => {
       this.newLocation.latitude = data.location.lat;
       this.newLocation.longitude = data.location.lng;
-      console.log(this.newLocation);
       this.router.navigateByUrl('/main');
-
     });
+  }
 
-    // routerLink = "/main"
+  public milesToMeters() {
+    this.radiusMeters = this.radiusMiles * 1609.34;
   }
 
 
