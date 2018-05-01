@@ -1,8 +1,9 @@
 import { GeoLocation } from './../domain/models/geolocation';
 import { ApiRepositoryService } from './../domain/api-repository.service';
 import { Component, OnInit, Input, NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InfoService } from '../domain';
 
 
 @Component({
@@ -22,13 +23,13 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private apiRepo: ApiRepositoryService,
-    private router: Router
+    private router: Router,
+    private infoService: InfoService
   ) { }
 
   ngOnInit() {
     // initialize the data inside the location as blank
-    this.newLocation = { };
-
+    this.newLocation = {};
     this.enteredLocation = '';
   }
 
@@ -40,26 +41,22 @@ export class DashboardComponent implements OnInit {
     this.passedInLocation = this.enteredLocation.replace(/\s/g, '+');
     // search the user's location:
     this.apiRepo.getLocation(this.passedInLocation).subscribe(data => {
-      this.newLocation.latitude = data.results[0].geometry.location.lat; // filler
-      this.newLocation.longitude = data.results[0].geometry.location.lng; // filler
+      this.newLocation.latitude = data.results[0].geometry.location.lat;
+      this.newLocation.longitude = data.results[0].geometry.location.lng;
+      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude);
       this.router.navigateByUrl('/main');
-      console.log(this.newLocation);
     });
 
   }
 
   public getLocation() {
 
-    this.apiRepo.getGeoLocation().subscribe( data => {
+    this.apiRepo.getGeoLocation().subscribe(data => {
       this.newLocation.latitude = data.location.lat;
       this.newLocation.longitude = data.location.lng;
-      console.log(this.newLocation);
+      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude);
       this.router.navigateByUrl('/main');
 
     });
-
-    // routerLink = "/main"
   }
-
-
 }
