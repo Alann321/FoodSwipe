@@ -9,10 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-
+  // make an object for holding the swiped restaurants
   public swipedRestaurants: any [] = [];
-  public givenRestaurant: any;
-
 
   constructor(
     // get results from the info service (do this later)
@@ -20,26 +18,28 @@ export class ResultsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    this.givenRestaurant = {name: 'hello', cuisine: 'world', description: 'this place is awesome!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
-    this.givenRestaurant = {name: 'Chipotle', cuisine: 'Mexican', description: 'Greatest tacos ever!!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
-    this.givenRestaurant = {name: 'Chipotle', cuisine: 'Mexican', description: 'Greatest tacos ever!!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
-    this.givenRestaurant = {name: 'Chipotle', cuisine: 'Mexican', description: 'Greatest tacos ever!!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
-    this.givenRestaurant = {name: 'Chipotle', cuisine: 'Mexican', description: 'Greatest tacos ever!!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
-    this.givenRestaurant = {name: 'Chipotle', cuisine: 'Mexican', description: 'Greatest tacos ever!!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
-    this.givenRestaurant = {name: 'Chipotle', cuisine: 'Mexican', description: 'Greatest tacos ever!!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
-    this.givenRestaurant = {name: 'Chipotle', cuisine: 'Mexican', description: 'Greatest tacos ever!!'};
-    this.swipedRestaurants.push(this.givenRestaurant);
+    // get the swiped restaurants
+    this.swipedRestaurants = this.infoService.getResults();
   }
 
+  // function for getting the number of dollar signs
+  public getDollarSigns(numberSigns: number) {
 
+    // make counter variable
+    let i: number;
+
+    // string to be returned with the total signs
+    let totalSigns: string;
+    totalSigns = '';
+
+    // loop through and append dollar signs
+    for (i = 0; i < numberSigns; i++) {
+      totalSigns += '$';
+    }
+
+    // return the total signs
+    return totalSigns;
+  }
 
 
 }
