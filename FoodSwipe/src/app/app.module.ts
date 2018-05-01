@@ -10,6 +10,8 @@ import { RoutingModule } from './routing.module';
 import { ResultsComponent } from './results/results.component';
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InfoService } from './domain/info.service';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule
   ],
   providers: [
-    ApiRepositoryService
+    ApiRepositoryService,
+    InfoService
   ],
   bootstrap: [AppComponent]
 })

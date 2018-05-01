@@ -3,6 +3,7 @@ import { ApiRepositoryService } from './../domain/api-repository.service';
 import { Component, OnInit, Input, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InfoService } from '../domain';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private apiRepo: ApiRepositoryService,
-    private router: Router
+    private router: Router,
+    private infoService: InfoService
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class DashboardComponent implements OnInit {
     this.apiRepo.getLocation(this.passedInLocation).subscribe(data => {
       this.newLocation.latitude = data.results[0].geometry.location.lat;
       this.newLocation.longitude = data.results[0].geometry.location.lng;
+      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude, this.radiusMeters);
       this.router.navigateByUrl('/main');
     });
 
@@ -54,6 +57,7 @@ export class DashboardComponent implements OnInit {
     this.apiRepo.getGeoLocation().subscribe(data => {
       this.newLocation.latitude = data.location.lat;
       this.newLocation.longitude = data.location.lng;
+      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude, this.radiusMeters);
       this.router.navigateByUrl('/main');
     });
   }
