@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
   public info: any;
   public restaurants: any[];
+  public cuisines: any[];
   constructor(
     private apiRepo: ApiRepositoryService,
     protected httpClient: HttpClient,
@@ -20,15 +21,19 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.info = this.infoService.getInfo();
-    // this.getRestaurants();
+    this.getRestaurants();
     console.log(this.info);
 
   }
 
-   public getRestaurants() {
-     this.apiRepo.getRestaurants(this.info.lat, this.info.lng).subscribe( data => {
-       console.log(data);
-     });
-   }
+  public getRestaurants() {
+    this.apiRepo.getRestaurants(this.info.lat, this.info.lng).subscribe(data => {
+      this.restaurants = data.restaurants;
+      this.cuisines = this.restaurants.map(obj => {
+        return obj.restaurant.cuisines;
+      });
+      console.log(this.cuisines);
+    });
+  }
 
 }
