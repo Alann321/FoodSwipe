@@ -5,19 +5,16 @@ export class InfoService {
 
   public lat: number;
   public lng: number;
-  public radius: number;
   public info: any;
   constructor() {
     this.info = {
       'lat': this.lat,
-      'lng': this.lng,
-      'radius': this.radius
+      'lng': this.lng
     };
   }
-  setInfo(latitude, longitude, radius) {
+  setInfo(latitude, longitude) {
     this.info.lat = latitude;
     this.info.lng = longitude;
-    this.info.radius = radius;
   }
 
   getInfo(): any {

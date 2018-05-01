@@ -35,8 +35,8 @@ export class ApiRepositoryService {
     );
   }
   // get list of restaurants 1-20 within a given radius
-  public getRestaurants(lat: number, lng: number, radius: number ): Observable<any> {
-    return this.httpClient.get(`${this.zomatoEndpoint}/count=20&lat=${lat}&lon=${lng}&radius=${radius}`, this.httpOptions).pipe(
+  public getRestaurants(lat: number, lng: number): Observable<any> {
+    return this.httpClient.get(`${this.zomatoEndpoint}/count=20&lat=${lat}&lon=${lng}`, this.httpOptions).pipe(
       catchError(this.handleException)
     );
   }

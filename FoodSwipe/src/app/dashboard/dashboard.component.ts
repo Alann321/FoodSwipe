@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
   // otherwise user sees + replacing spaces in text box
   public passedInLocation: string;
   public newLocation: GeoLocation;
-  public radiusMiles: number;
-  public radiusMeters: number;
 
   constructor(
     private apiRepo: ApiRepositoryService,
@@ -32,7 +30,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     // initialize the data inside the location as blank
     this.newLocation = {};
-    this.radiusMiles = 0;
     this.enteredLocation = '';
   }
 
@@ -46,7 +43,7 @@ export class DashboardComponent implements OnInit {
     this.apiRepo.getLocation(this.passedInLocation).subscribe(data => {
       this.newLocation.latitude = data.results[0].geometry.location.lat;
       this.newLocation.longitude = data.results[0].geometry.location.lng;
-      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude, this.radiusMeters);
+      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude);
       this.router.navigateByUrl('/main');
     });
 
@@ -57,14 +54,9 @@ export class DashboardComponent implements OnInit {
     this.apiRepo.getGeoLocation().subscribe(data => {
       this.newLocation.latitude = data.location.lat;
       this.newLocation.longitude = data.location.lng;
-      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude, this.radiusMeters);
+      this.infoService.setInfo(this.newLocation.latitude, this.newLocation.longitude);
       this.router.navigateByUrl('/main');
+
     });
   }
-
-  public milesToMeters() {
-    this.radiusMeters = this.radiusMiles * 1609.34;
-  }
-
-
 }
