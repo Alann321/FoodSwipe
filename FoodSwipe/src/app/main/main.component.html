@@ -1,9 +1,10 @@
 <div class="container">
-  <h1>
-    Food Swipe
-  </h1>
-  <br>
-  <br>
-  <!-- <div class="btn btn-primary" (click)="getLocation()"> -->
-    Click to get location
+  <div class="card" style="width: 18rem;" *ngIf="cuisines">
+    <div class="card-body">
+      <h5 class="card-title">{{cuisines[iterator]}}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <button (click)="no()" type="button" class="btn btn-danger">No</button>
+      <button (click)="yes()" type="button" class="btn btn-success">Yes</button>
+    </div>
   </div>
+</div>
