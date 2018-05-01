@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ApiRepositoryService, InfoService } from './../domain/';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 
@@ -18,7 +19,8 @@ export class MainComponent implements OnInit {
   constructor(
     private apiRepo: ApiRepositoryService,
     protected httpClient: HttpClient,
-    private infoService: InfoService
+    private infoService: InfoService,
+    private router: Router
   ) { }
 
 
@@ -41,6 +43,11 @@ export class MainComponent implements OnInit {
     });
   }
 
+
+  public showResults() {
+    console.log('Showing results');
+    this.router.navigateByUrl('results');
+  }
   public yes() {
     // loop through restaurant array to add
     for ( let i = 0; i < this.restaurants.length; i++) {
