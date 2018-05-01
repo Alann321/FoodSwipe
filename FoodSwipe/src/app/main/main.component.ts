@@ -45,7 +45,9 @@ export class MainComponent implements OnInit {
 
 
   public showResults() {
-    console.log('Showing results');
+    // send in the restaurants to the shared service
+    this.infoService.setResults(this.suggested);
+    // navigate to the results page
     this.router.navigateByUrl('/results');
   }
   public yes() {
@@ -56,14 +58,14 @@ export class MainComponent implements OnInit {
       }
     }
     this.filterRestaurants();
-    console.log(this.suggested);
+    // console.log(this.suggested);
     this.iterator++;
   }
 
   public no() {
     this.filterRestaurants();
     this.iterator++;
-    console.log(this.restaurants);
+    // console.log(this.restaurants);
   }
 
   public filterRestaurants() {
