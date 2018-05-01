@@ -48,7 +48,7 @@ export class MainComponent implements OnInit {
     // send in the restaurants to the shared service
     this.infoService.setResults(this.suggested);
     // navigate to the results page
-    this.router.navigateByUrl('results');
+    this.router.navigateByUrl('/results');
   }
   public yes() {
     // loop through restaurant array to add
